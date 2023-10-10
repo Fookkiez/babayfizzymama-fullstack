@@ -10,7 +10,9 @@
 
 </IfModule>
 
-
+<FilesMatch "\.(?i:jpg|jpeg|png|gif|webp)$">
+  Allow from all
+</FilesMatch>
 
  Options -MultiViews
     RewriteEngine On
