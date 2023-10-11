@@ -34,36 +34,11 @@ export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const jsonData = { 
-        email: data.get('email'),
-        password: data.get('password'),
-    };
-    console.log(jsonData);
-    SubmitDatatoAPI(jsonData).then((res) => {
-        if(res.status === 'ok'){
-            alert('Login Success');
-            console.log('result',res);
-            localStorage.setItem('token', res.token);
-            window.location = '/Album';
-        }
-    }).catch((err) => console.log('err',err));
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
   };
-
-  async function SubmitDatatoAPI(data) {
-    try {
-      const response = await fetch("http://localhost:5050/login", {
-        method: "POST",
-        headers: {
-          'Content-type' : 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      return result;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
