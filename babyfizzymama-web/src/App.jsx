@@ -1,26 +1,32 @@
-import React, { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/Header/Header'
-import Content from './components/Content/Content'
-import { Footer } from './components/Footer/Footer'
-import { Box } from '@mui/material'
+import React, { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Layout from "./components/Layout";
+import { Footer } from "./components/Footer/Footer";
+import { Box } from "@mui/material";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-function App () {
+import routes from './routes/Routes.jsx'
+
+const router = createBrowserRouter(routes);
+
+function App() {
   return (
     <Box>
-      {/* <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1> */}
-      <Header Headers={'sawasd'}/>
-      <Content />
-      <Footer/>
+      <Layout>
+        <RouterProvider router={router}>
+        </RouterProvider>
+      </Layout>
     </Box>
-  )
+  );
 }
 
-export default App
+export default App;
 // function App() {
 //   const [count, setCount] = useState(0)
 
